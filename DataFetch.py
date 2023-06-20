@@ -132,10 +132,3 @@ def GetDistrictDevisions(district):
             pass
     return DevisonList
 
-ProvincesList = GetProvinces()
-
-for Province in ProvincesList:
-    print(json.dumps(Province,indent=2))
-    print(json.dumps(GetProvinceDistricts(Province),indent=2))
-    for Devison in GetProvinceDistricts(Province):
-        print(json.dumps(GetDistrictDevisions(Devison),indent=2))
