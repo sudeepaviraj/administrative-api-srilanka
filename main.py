@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask,jsonify
 import json
 from DataScrape import GetProvinces
 from Database import SelectQuery
@@ -9,7 +9,7 @@ app = Flask(__name__)
 def ProvincesList():
     provinces = SelectQuery("SELECT * FROM provinces")
     print(json.dumps({"provinces":provinces}))
-    return json.dumps({"provinces":provinces})
+    return jsonify({"provinces":provinces})
 
 
 @app.route("/districts")
