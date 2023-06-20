@@ -3,12 +3,13 @@ import pandas as pd
 from bs4 import BeautifulSoup
 import json
 
-def GetProvinces()->list:
-    
+
+def GetProvinces() -> list:
+
     ProvinceList = []
-    
+
     cookies = {
-    'lifecode': 'jfal4q3a37c7ql6ukf138g1l4r',
+        'lifecode': 'jfal4q3a37c7ql6ukf138g1l4r',
     }
 
     headers = {
@@ -21,28 +22,31 @@ def GetProvinces()->list:
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36',
     }
 
-    response = requests.get('http://apps.moha.gov.lk:8090/lifecode/village_list', cookies=cookies, headers=headers, verify=False)
-    
-    soup = BeautifulSoup(response.content,"html.parser")
-    
+    response = requests.get('http://apps.moha.gov.lk:8090/lifecode/village_list',
+                            cookies=cookies, headers=headers, verify=False)
+
+    soup = BeautifulSoup(response.content, "html.parser")
+
     provinces = soup.find("select")
- 
+
     for province in provinces:
-        if(province.getText()[3:]!='ect a Province'):
+        if (province.getText()[3:] != 'ect a Province'):
             try:
-                ProvinceList.append({"name":province.getText()[3:],"value":province["value"]})
+                ProvinceList.append(
+                    {"name": province.getText()[3:], "value": province["value"]})
             except:
                 pass
         else:
             pass
     return ProvinceList
-        
-def GetProvinceDistricts(province:str)->list:
-    
+
+
+def GetProvinceDistricts(province: str) -> list:
+
     DistrictList = []
-    
+
     cookies = {
-    'lifecode': 'jfal4q3a37c7ql6ukf138g1l4r',
+        'lifecode': 'jfal4q3a37c7ql6ukf138g1l4r',
     }
 
     headers = {
@@ -70,27 +74,28 @@ def GetProvinceDistricts(province:str)->list:
         verify=False,
     )
 
-    soup = BeautifulSoup(json.loads(response.content)["output"],"html.parser")
+    soup = BeautifulSoup(json.loads(response.content)["output"], "html.parser")
 
     districts = soup.find_all("option")
-    
+
     for district in districts:
-        if(district.getText()!="Select a District"):
+        if (district.getText() != "Select a District"):
             try:
-                DistrictList.append({"name":district.getText()[3:],"value":district["value"]})
+                DistrictList.append(
+                    {"name": district.getText()[3:], "value": district["value"]})
             except:
                 pass
         else:
             pass
     return DistrictList
-        
+
 
 def GetDistrictDevisions(district):
-    
+
     DevisonList = []
-    
+
     cookies = {
-    'lifecode': 'jfal4q3a37c7ql6ukf138g1l4r',
+        'lifecode': 'jfal4q3a37c7ql6ukf138g1l4r',
     }
 
     headers = {
@@ -117,18 +122,18 @@ def GetDistrictDevisions(district):
         data=data,
         verify=False,
     )
-    
-    soup = BeautifulSoup(json.loads(response.content)["output"],"html.parser")
+
+    soup = BeautifulSoup(json.loads(response.content)["output"], "html.parser")
 
     devisions = soup.find_all("option")
-    
+
     for devision in devisions:
-        if(devision.getText()!="Select a Divisional Secretariat"):
+        if (devision.getText() != "Select a Divisional Secretariat"):
             try:
-                DevisonList.append({"name":devision.getText()[3:],"value":devision["value"]})
+                DevisonList.append({"name": devision.getText()[
+                                   3:], "value": devision["value"]})
             except:
                 pass
         else:
             pass
     return DevisonList
-

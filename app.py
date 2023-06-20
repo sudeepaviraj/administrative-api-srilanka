@@ -6,4 +6,4 @@ app = Flask(__name__)
 
 @app.route("/provinces")
 def ProvincesList():
-    return json.dumps(GetProvinces())
+    return json.dumps(GetProvinces(),indent=2)
