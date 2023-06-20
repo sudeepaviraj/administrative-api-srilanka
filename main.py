@@ -8,7 +8,8 @@ app = Flask(__name__)
 @app.route("/provinces")
 def ProvincesList():
     provinces = SelectQuery("SELECT * FROM provinces")
-    return type(provinces)
+    print(type(provinces))
+    return provinces
 
 
 @app.route("/districts")
