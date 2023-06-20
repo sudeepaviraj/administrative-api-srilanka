@@ -1,6 +1,6 @@
 from flask import Flask
 import json
-from DataFetch import GetProvinces
+from DataScrape import GetProvinces
 
 app = Flask(__name__)
 
