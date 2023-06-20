@@ -1,0 +1,4 @@
+beautifulsoup4
+Flask
+mysql_connector
+Requests
