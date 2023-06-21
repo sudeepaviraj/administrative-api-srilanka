@@ -16,11 +16,10 @@ def DistrictsList():
     districts= SelectQuery("SELECT id,name FROM districts")
     return json.dumps(districts)
 
-@app.route("/districts",methods=["POST"])
-def DistrictsListPOST():
-    dataset = json.dumps(request.data)
-    print(dataset)
-    districts = SelectQuery(f"SELECT id,name FROM districts WHERE province_id = {dataset['province']}")
+@app.route("/getdistricts",methods=["GET"])
+def DistrictsListSELECT():
+    id = request.args.get("province")
+    districts = SelectQuery(f"SELECT id,name FROM districts WHERE province_id = {id}")
     print(districts)
     return districts
 
@@ -28,6 +27,13 @@ def DistrictsListPOST():
 def DivisionsList():
     divisions= SelectQuery("SELECT id,name FROM divisions")
     return json.dumps(divisions)
+
+@app.route("/getdivisions",methods=["GET"])
+def DivisionsListSELECT():
+    id = request.args.get("district")
+    divisions = SelectQuery(f"SELECT id,name FROM divisions WHERE district_id = {id}")
+    return json.dumps(divisions)
+
 
 if __name__ == "__main__":
     app.run(debug=True)
