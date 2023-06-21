@@ -83,11 +83,7 @@ Example response:
 
 ## Special Note
 
-You can run sql queries form your own mysql server directly. To do that please use database file 
-
-```
-http://db.famed.cloud/
-```
+You can run sql queries form your own mysql server directly. To do that please use database file ```srilanka.sql``` to your own mysql server
 
 ## Contributing
 
