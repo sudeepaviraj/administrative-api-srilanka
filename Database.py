@@ -4,11 +4,11 @@ import mysql.connector
 
 def Query(sql):
     connection = mysql.connector.connect(
-        host="www.sudeepavirajitha.me",
-        port=3306,
-        user="sudeepav_user",
-        password="q*+VPfTAs,s3",
-        database="sudeepav_srilanka"
+        host="YOUR DATABASE HOST",
+        port="YOUR DATABASE PORT",
+        user="YOUR DATABASE HOST",
+        password="YOUR DATABASE PASSWORD",
+        database="YOUR DATABASE"
     )
     cursor = connection.cursor()
 
