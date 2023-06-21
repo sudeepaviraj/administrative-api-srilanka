@@ -22,6 +22,25 @@ cd gn-extract
 pip install -r requirements.txt
 ```
 
+## Config
+
+You Need to config this before use
+
+1. Import ```srilanka.sql``` to your own sql server
+
+
+2. Update connection values in ```database.py```
+
+```
+connection = mysql.connector.connect(
+        host="YOUR_DATABSE_HOST",
+        port=3306,
+        user="YOUR DATABASE USER",
+        password="YOUR DATABASE PASSWORD",
+        database="YOUR DATABASE"
+    )
+```
+
 ## Usage
 
 1. Run the application:
@@ -58,13 +77,13 @@ Example response:
         "id": 2,
         "name": "Central"
     },
-    ...
 ]
 ```
 
-## Demo API
 
-You can access the demo of this project from
+## Special Note
+
+You can run sql queries form your own mysql server directly. To do that please use database file 
 
 ```
 http://db.famed.cloud/
