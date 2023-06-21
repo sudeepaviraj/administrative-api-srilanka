@@ -1,0 +1,46 @@
+import json
+
+import mysql.connector
+
+def Query(sql):
+    connection = mysql.connector.connect(
+        host="www.sudeepavirajitha.me",
+        port=3306,
+        user="sudeepav_user",
+        password="q*+VPfTAs,s3",
+        database="sudeepav_srilanka"
+    )
+    cursor = connection.cursor()
+
+    try:
+        cursor.execute(sql)
+        connection.commit()
+        connection.close()
+        return "done"
+    except Exception as e:
+        raise SyntaxError(e)
+
+
+def SelectQuery(sql) -> list:
+    connection = mysql.connector.connect(
+        host="www.sudeepavirajitha.me",
+        port=3306,
+        user="sudeepav_user",
+        password="q*+VPfTAs,s3",
+        database="sudeepav_srilanka"
+    )
+    dataset = []
+    try:
+        curser = connection.cursor()
+        curser.execute(sql)
+        responses = curser.fetchall()
+        try:
+            for response in responses:
+                dataset.append({"id": response[0], "name": response[1].decode("utf-8")})
+        except Exception as e:
+            for response in responses:
+                dataset.append({"id": response[0], "name": response[1]})
+        connection.close()
+        return dataset
+    except Exception as e:
+        raise SyntaxError(e)
