@@ -19,9 +19,12 @@ def DistrictsList():
 @app.route("/getdistricts",methods=["GET"])
 def DistrictsListSELECT():
     id = request.args.get("province")
-    districts = SelectQuery(f"SELECT id,name FROM districts WHERE province_id = {id}")
-    print(districts)
-    return districts
+    if id is None:
+        return "Please Add Province Id",422
+    else:
+        districts = SelectQuery(f"SELECT id,name FROM districts WHERE province_id = {id}")
+        print(districts)
+        return districts
 
 @app.route("/divisions",methods=["GET"])
 def DivisionsList():
@@ -31,8 +34,11 @@ def DivisionsList():
 @app.route("/getdivisions",methods=["GET"])
 def DivisionsListSELECT():
     id = request.args.get("district")
-    divisions = SelectQuery(f"SELECT id,name FROM divisions WHERE district_id = {id}")
-    return json.dumps(divisions)
+    if id is None:
+        return "Please Add District Id", 422
+    else:
+        divisions = SelectQuery(f"SELECT id,name FROM divisions WHERE district_id = {id}")
+        return json.dumps(divisions)
 
 
 if __name__ == "__main__":
