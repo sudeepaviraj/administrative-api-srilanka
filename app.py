@@ -25,7 +25,22 @@ def Home():
 </ol>
 <pre><code class="lang-bash">pip <span class="hljs-keyword">install</span> -r requirements.txt
 </code></pre>
-<h2 id="usage">Usage</h2>
+<h2 id="config">Config</h2>
+<p>You Need to config this before use</p>
+<ol>
+<li>Import <code>srilanka.sql</code> to your own sql server</li>
+</ol>
+<ol>
+<li>Update connection values in <code>database.py</code></li>
+</ol>
+<pre><code>connection = mysql<span class="hljs-selector-class">.connector</span><span class="hljs-selector-class">.connect</span>(
+        host=<span class="hljs-string">"YOUR_DATABSE_HOST"</span>,
+        port=<span class="hljs-number">3306</span>,
+        user=<span class="hljs-string">"YOUR DATABASE USER"</span>,
+        password=<span class="hljs-string">"YOUR DATABASE PASSWORD"</span>,
+        database=<span class="hljs-string">"YOUR DATABASE"</span>
+    )
+</code></pre><h2 id="usage">Usage</h2>
 <ol>
 <li>Run the application:</li>
 </ol>
@@ -56,22 +71,25 @@ def Home():
     {
         <span class="hljs-attr">"id"</span>: <span class="hljs-number">2</span>,
         <span class="hljs-attr">"name"</span>: <span class="hljs-string">"Central"</span>
-    },
-    ...
+    }
 ]
 </code></pre>
-<h2 id="demo-api">Demo API</h2>
-<p>You can access the demo of this project from</p>
-<pre><code><span class="hljs-symbol">http:</span><span class="hljs-comment">//db.famed.cloud/</span>
-</code></pre><h2 id="contributing">Contributing</h2>
-<p>We welcome contributions to improve this project! If you&#39;d like to contribute, please follow these steps:</p>
-<ol>
-<li><p>Fork the repository.</p>
-</li>
-<li><p>Create a new branch for your feature:</p>
-</li>
-</ol>
-<pre><code class="lang-bash">git checkout -b <span class="hljs-built_in">feature</span>/your-<span class="hljs-built_in">feature</span>-name
+<h2 id="demo-api-endpoint">Demo API Endpoint</h2>
+<pre><code class="lang-http://db.famed.cloud/```">
+<span class="hljs-meta">## *Special Note*</span>
+
+**You can run sql queries form your own mysql server directly. <span class="hljs-keyword">To</span> <span class="hljs-keyword">do</span> that please use database file ```srilanka.sql``` <span class="hljs-keyword">to</span> your own mysql server**
+
+<span class="hljs-meta">## Contributing</span>
+
+We welcome contributions <span class="hljs-keyword">to</span> improve this project! <span class="hljs-keyword">If</span> you<span class="hljs-comment">'d like to contribute, please follow these steps:</span>
+
+<span class="hljs-number">1.</span> Fork the repository.
+
+<span class="hljs-number">2.</span> Create a <span class="hljs-keyword">new</span> branch <span class="hljs-keyword">for</span> your feature:
+
+```bash
+git checkout -b feature/your-feature-name
 </code></pre>
 <ol>
 <li>Make your changes and commit them:</li>
