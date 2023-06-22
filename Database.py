@@ -1,14 +1,18 @@
 import json
 
 import mysql.connector
+from dotenv.main import load_dotenv
+import os
+
+load_dotenv()
 
 def Query(sql):
     connection = mysql.connector.connect(
-        host="YOUR DATABASE HOST",
-        port="YOUR DATABASE PORT",
-        user="YOUR DATABASE HOST",
-        password="YOUR DATABASE PASSWORD",
-        database="YOUR DATABASE"
+        host=os.environ["DATABASE_HOST"],
+        port=os.environ["DATABASE_PORT"],
+        user=os.environ["DATABASE_USER"],
+        password=os.environ["DATABASE_PASSWORD"],
+        database=os.environ["DATABASE_NAME"]
     )
     cursor = connection.cursor()
 
@@ -23,11 +27,11 @@ def Query(sql):
 
 def SelectQuery(sql) -> list:
     connection = mysql.connector.connect(
-        host="YOUR DATABASE HOST",
-        port="YOUR DATABASE PORT",
-        user="YOUR DATABASE HOST",
-        password="YOUR DATABASE PASSWORD",
-        database="YOUR DATABASE"
+        host=os.environ["DATABASE_HOST"],
+        port=os.environ["DATABASE_PORT"],
+        user=os.environ["DATABASE_USER"],
+        password=os.environ["DATABASE_PASSWORD"],
+        database=os.environ["DATABASE_NAME"]
     )
     dataset = []
     try:

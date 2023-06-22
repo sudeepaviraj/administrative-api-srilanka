@@ -1,10 +1,12 @@
 import requests
 from bs4 import BeautifulSoup
 import json
+import pandas as pd
+from tkinter.messagebox import showinfo
+
 
 
 def GetProvinces() -> list:
-
     ProvinceList = []
 
     cookies = {
@@ -41,7 +43,6 @@ def GetProvinces() -> list:
 
 
 def GetProvinceDistricts(province: str) -> list:
-
     DistrictList = []
 
     cookies = {
@@ -90,7 +91,6 @@ def GetProvinceDistricts(province: str) -> list:
 
 
 def GetDistrictDevisions(district):
-
     DevisonList = []
 
     cookies = {
@@ -130,9 +130,57 @@ def GetDistrictDevisions(district):
         if (devision.getText() != "Select a Divisional Secretariat"):
             try:
                 DevisonList.append({"name": devision.getText()[
-                                   3:], "value": devision["value"]})
+                                            3:], "value": devision["value"]})
             except:
                 pass
         else:
             pass
     return DevisonList
+
+
+def GetGramaniladari() -> list:
+    cookies = {
+        'lifecode': '7c8q5ssh6cl83efdfk6blm04b9',
+    }
+
+    headers = {
+        'Accept': '*/*',
+        'Accept-Language': 'en-GB,en-US;q=0.9,en;q=0.8',
+        'Connection': 'keep-alive',
+        'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
+        # 'Cookie': 'lifecode=7c8q5ssh6cl83efdfk6blm04b9',
+        'Origin': 'http://apps.moha.gov.lk:8090',
+        'Referer': 'http://apps.moha.gov.lk:8090/lifecode/gn_list',
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36',
+        'X-Requested-With': 'XMLHttpRequest',
+    }
+
+    data = {
+        'district': '42',
+        'province': '63',
+    }
+
+    response = requests.post(
+        'http://apps.moha.gov.lk:8090/lifecode/views/rpt_gn_list.php',
+        cookies=cookies,
+        headers=headers,
+        data=data,
+        verify=False,
+    )
+
+    table = pd.read_html(response.content, encoding="utf-8")
+
+
+    for row in table[0].index:
+        print(table[0]["LIFe Code"][row])
+        print(table[0]["GN Code"][row])
+        print(table[0]["Name in Sinhala"][row])
+        print(table[0]["Name in Tamil"][row])
+        print(table[0]["Name in English"][row])
+        print(table[0]["Divisional Secretariat"].unique())
+        print(table[0]["Province"].unique())
+        print(table[0]["District"].unique()[0].split("/")[0][3:])
+        print(table[0]["District"].unique()[0].split("/")[1].replace(" ",''))
+        print(table[0]["District"].unique()[0].split("/")[2].replace(" ",''))
+
+GetGramaniladari()
