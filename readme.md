@@ -76,10 +76,12 @@ Example response:
     {
         "id": 2,
         "name": "Central"
-    },
+    }
 ]
 ```
+## Demo API Endpoint
 
+```http://db.famed.cloud/```
 
 ## *Special Note*
 
