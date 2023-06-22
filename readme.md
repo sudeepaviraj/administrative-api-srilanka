@@ -7,13 +7,13 @@
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/sudeepaviraj/gn-extract.git
+git clone https://github.com/sudeepaviraj/administrative-api-srilanka.git
 ```
 
 2. Navigate to the project directory:
 
 ```bash
-cd gn-extract
+cd administrative-api-srilanka
 ```
 
 3. Install the required dependencies:
