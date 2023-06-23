@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 23, 2023 at 04:19 AM
+-- Generation Time: Jun 23, 2023 at 06:52 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -29,10 +29,10 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `districts` (
   `id` int(11) NOT NULL,
-  `name_en` varchar(100) NOT NULL,
+  `name_en` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `province_id` int(11) NOT NULL,
-  `name_si` varchar(100) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
-  `name_ta` varchar(100) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL
+  `name_si` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `name_ta` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -76,8 +76,8 @@ CREATE TABLE `divisions` (
   `id` int(11) NOT NULL,
   `name_en` varchar(50) NOT NULL,
   `district_id` int(11) NOT NULL,
-  `name_si` varchar(100) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
-  `name_ta` varchar(100) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL
+  `name_si` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `name_ta` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -434,9 +434,9 @@ INSERT INTO `divisions` (`id`, `name_en`, `district_id`, `name_si`, `name_ta`) V
 
 CREATE TABLE `provinces` (
   `id` int(11) NOT NULL,
-  `name_en` varchar(100) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
-  `name_si` varchar(100) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
-  `name_ta` varchar(100) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL
+  `name_en` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `name_si` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `name_ta` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -461,12 +461,12 @@ INSERT INTO `provinces` (`id`, `name_en`, `name_si`, `name_ta`) VALUES
 --
 
 CREATE TABLE `villages` (
-  `name_en` varchar(100) NOT NULL,
-  `name_ta` varchar(100) NOT NULL,
-  `name_si` varchar(100) NOT NULL,
-  `gn_code` varchar(100) NOT NULL,
-  `life_code` varchar(100) NOT NULL,
-  `mpa_code` varchar(100) NOT NULL,
+  `name_en` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `name_ta` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `name_si` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `gn_code` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `life_code` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `mpa_code` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `division_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 

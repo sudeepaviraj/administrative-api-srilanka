@@ -116,7 +116,7 @@ def ProvincesList():
 
 @app.route("/districts",methods=["GET"])
 def DistrictsList():
-    districts= SelectQuery("SELECT id,name FROM districts")
+    districts= SelectQuery("SELECT id,name_si,name_ta,name_en FROM districts")
     return json.dumps(districts)
 
 @app.route("/getdistricts",methods=["GET"])
@@ -125,13 +125,13 @@ def DistrictsListSELECT():
     if id is None:
         return "Please Add Province Id",422
     else:
-        districts = SelectQuery(f"SELECT id,name FROM districts WHERE province_id = {id}")
+        districts = SelectQuery(f"SELECT id,name_si,name_en,name_ta FROM districts WHERE province_id = {id}")
         print(districts)
         return districts
 
 @app.route("/divisions",methods=["GET"])
 def DivisionsList():
-    divisions= SelectQuery("SELECT id,name FROM divisions")
+    divisions= SelectQuery("SELECT id,name_si,name_en,name_ta FROM divisions")
     return json.dumps(divisions)
 
 @app.route("/getdivisions",methods=["GET"])
@@ -140,8 +140,19 @@ def DivisionsListSELECT():
     if id is None:
         return "Please Add District Id", 422
     else:
-        divisions = SelectQuery(f"SELECT id,name FROM divisions WHERE district_id = {id}")
+        divisions = SelectQuery(f"SELECT id,name_si,name_en,name_ta FROM divisions WHERE district_id = {id}")
         return json.dumps(divisions)
+
+@app.route("/villages",methods=["GET"])
+def VillagesListSELECT():
+    id = request.args.get("division")
+    if id is None:
+        return "Please Add Division Id", 422
+    else:
+        divisions = SelectQuery(f"SELECT * FROM villages WHERE division_id = {id}")
+        return json.dumps(divisions)
+
+
 
 
 if __name__ == "__main__":
