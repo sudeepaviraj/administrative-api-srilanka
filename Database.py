@@ -7,11 +7,11 @@ load_dotenv()
 
 def Query(sql):
     connection = mysql.connector.connect(
-        host=os.environ["DATABASE_HOST_TEST"],
-        port=os.environ["DATABASE_PORT_TEST"],
-        user=os.environ["DATABASE_USER_TEST"],
-        password=os.environ["DATABASE_PASSWORD_TEST"],
-        database=os.environ["DATABASE_NAME_TEST"]
+        host=os.environ["DATABASE_HOST"],
+        port=os.environ["DATABASE_PORT"],
+        user=os.environ["DATABASE_USER"],
+        password=os.environ["DATABASE_PASSWORD"],
+        database=os.environ["DATABASE_NAME"]
     )
     cursor = connection.cursor()
 
@@ -26,11 +26,11 @@ def Query(sql):
 
 def SelectQuery(sql) -> list:
     connection = mysql.connector.connect(
-        host=os.environ["DATABASE_HOST_TEST"],
-        port=os.environ["DATABASE_PORT_TEST"],
-        user=os.environ["DATABASE_USER_TEST"],
-        password=os.environ["DATABASE_PASSWORD_TEST"],
-        database=os.environ["DATABASE_NAME_TEST"]
+        host=os.environ["DATABASE_HOST"],
+        port=os.environ["DATABASE_PORT"],
+        user=os.environ["DATABASE_USER"],
+        password=os.environ["DATABASE_PASSWORD"],
+        database=os.environ["DATABASE_NAME"]
     )
     dataset = []
     try:
