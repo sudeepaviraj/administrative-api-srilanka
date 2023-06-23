@@ -1,10 +1,15 @@
+import time
+
 import requests
 from bs4 import BeautifulSoup
 import json
+import pandas as pd
+from Database import SelectQuery,Query
+from tkinter.messagebox import showinfo
+
 
 
 def GetProvinces() -> list:
-
     ProvinceList = []
 
     cookies = {
@@ -41,7 +46,6 @@ def GetProvinces() -> list:
 
 
 def GetProvinceDistricts(province: str) -> list:
-
     DistrictList = []
 
     cookies = {
@@ -88,9 +92,7 @@ def GetProvinceDistricts(province: str) -> list:
             pass
     return DistrictList
 
-
 def GetDistrictDevisions(district):
-
     DevisonList = []
 
     cookies = {
@@ -130,9 +132,11 @@ def GetDistrictDevisions(district):
         if (devision.getText() != "Select a Divisional Secretariat"):
             try:
                 DevisonList.append({"name": devision.getText()[
-                                   3:], "value": devision["value"]})
+                                            3:], "value": devision["value"]})
             except:
                 pass
         else:
             pass
     return DevisonList
+
+

@@ -24,21 +24,21 @@ pip install -r requirements.txt
 
 ## Config
 
-You Need to config this before use
+You Need to configure this application before use
+1. Create a database named ```srilankav2``` in your sql server 
 
-1. Import ```srilanka.sql``` to your own sql server
+
+2. Import ```srilanka.sql``` to your own sql server
 
 
-2. Update connection values in ```database.py```
+3. Create a ```.env``` file and add database connection values 
 
 ```
-connection = mysql.connector.connect(
-        host="YOUR_DATABSE_HOST",
-        port=3306,
-        user="YOUR DATABASE USER",
-        password="YOUR DATABASE PASSWORD",
-        database="YOUR DATABASE"
-    )
+DATABASE_HOST="YOUR DATABASE HOST"
+DATABASE_PORT="YOUR DATABASE PORT"
+DATABASE_USER="YOUR DATABASE USER"
+DATABASE_PASSWORD="YOUR DATABASE PASSWORD"
+DATABASE_NAME="srilankav2"
 ```
 
 ## Usage
@@ -56,6 +56,7 @@ python app.py
 - **Get all divisions**: `/divisions`
 - **Get all districts in a province**: `/getdistricts?province={province_id}`
 - **Get all divisions in a district**: `/getdivisons?district={district_id}`
+- **Get all villages in a division**: `/villages?division={division_id}`
 
 3. Make HTTP GET requests to the desired endpoints using tools like `curl` or `Postman` to retrieve the administrative data.
 
@@ -68,24 +69,53 @@ curl http://localhost:5000/provinces
 Example response:
 
 ```json
-[
-    {
-        "id": 1,
-        "name": "Western"
-    },
-    {
-        "id": 2,
-        "name": "Central"
-    }
+[   
+  [
+    63,
+    "Western",
+    "බස්නාහිර",
+    "மேற்கு"
+  ],
+  [
+    64,
+    "Central",
+    "මධ්‍යම",
+    "மத்திய"
+  ]
 ]
 ```
+## Response Structure
+
+```provinces,districts and divisions```
+```json
+ [
+   "PROVINCE_ID",
+   "NAME_EN",
+   "NAME_SI",
+   "NAME_TA"
+ ]
+```
+```villages```
+```json
+ [
+   [
+    "LIFE_CODE",
+    "GN_CODE",
+    "MPA_CODE",
+    "NAME_EN",
+    "NAME_SI",
+    "NAME_TA"
+  ]
+ ]
+```
+
 ## Demo API Endpoint
 
 ```http://db.famed.cloud/```
 
 ## *Special Note*
 
-**You can run sql queries form your own mysql server directly. To do that please use database file ```srilanka.sql``` to your own mysql server**
+**You can run sql queries form your own application directly. To do that please use database file ```srilanka.sql``` to your own mysql server**
 
 ## Contributing
 
