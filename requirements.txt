@@ -1,7 +1,7 @@
 beautifulsoup4
 Flask
-mysql_connector
 Requests
 pandas
 python-dotenv
 lxml
+mysql_connector_python
