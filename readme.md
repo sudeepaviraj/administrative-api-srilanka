@@ -116,7 +116,7 @@ Example response:
 
 **Under Development**
 
-```http://db.famed.cloud/```
+```https://db.famed.cloud/```
 
 ## *Special Note*
 
