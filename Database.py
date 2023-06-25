@@ -37,8 +37,9 @@ def SelectQuery(sql) -> list:
         curser = connection.cursor()
         curser.execute(sql)
         try:
+            data = curser.fetchall()
             connection.close()
-            return curser.fetchall()
+            return data
         except Exception as e:
             connection.close()
             return "fetch failed"
