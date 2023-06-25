@@ -84,6 +84,9 @@ Example response:
   ]
 ]
 ```
+
+![Sample Response](https://i.postimg.cc/XJrqb8dM/Screenshot-2023-06-25-143005.png)
+
 ## Response Structure
 
 ```provinces,districts and divisions```
