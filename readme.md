@@ -120,7 +120,7 @@ Example response:
 
 ## *Special Note*
 
-**You can run sql queries form your own application directly. To do that please use database file ```srilanka.sql``` to your own mysql server**
+**You can run sql queries form your own application directly. To do that please use database file ```srilankav2.sql``` to your own mysql server**
 
 ## Contributing
 
